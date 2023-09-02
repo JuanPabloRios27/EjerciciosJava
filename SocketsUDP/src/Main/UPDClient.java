@@ -14,7 +14,7 @@ import java.net.SocketTimeoutException;
 public class UPDClient {
 	public static void main(String[] args) throws Exception{
 		try {
-			String serverHostName= new String("192.168.56.1");
+			String serverHostName= new String("introduce tu ip");
 			BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 			DatagramSocket clientSocket = new DatagramSocket();
 			InetAddress IPadress = InetAddress.getByName(serverHostName);
