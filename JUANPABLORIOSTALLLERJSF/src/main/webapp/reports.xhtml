@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body style="text-align:center">
+	<p:growl id="mensajes" showDetail="true" life="2000" />
+	<p:dataTable var="car" value="#{carBean.cars}">
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Model" />
+			</f:facet>
+			<h:outputText value="#{car.model}" />
+		</p:column>
+		<!-- aqui van mas columnas -->
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Manufacturer" />
+			</f:facet>
+			<h:outputText value="#{car.manufacturer}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Color" />
+			</f:facet>
+			<h:outputText value="#{car.color}" />
+		</p:column>
+		<p:column>
+			<f:facet name="header">
+				<h:outputText value="Year" />
+			</f:facet>
+			<h:outputText value="#{car.year}" />
+		</p:column>						
+	</p:dataTable>
+
+	<h4>ESTA ES LA SEGUNDA TABLA</h4>
+
+	<p:dataTable var="car" value="#{carBean.cars}">
+		<f:facet name="header">
+			List of Cars
+		</f:facet>
+		<p:column>
+			<f:facet name="header">
+		Model
+		</f:facet>
+		#{car.model}
+		<f:facet name="footer">
+		8 digit code
+		</f:facet>
+		</p:column>
+		<p:column headerText="Year" footerText="1960-2010">
+		#{car.year}
+		</p:column>
+		//more columns
+		<f:facet name="footer">
+		In total there are #{fn:length(carBean.cars)} cars.
+		</f:facet>
+	</p:dataTable>
+
+	<table border="1">
+		<tr>
+			<th>Fecha</th>
+			<th>Dato</th>
+		</tr>
+		<tr>
+			<td>
+				<!-- 	<p:calendar value="#{dateBean.date}" mode="inline" />  -->
+			</td>
+			<td><p:calendar value="#{dateBean.date}" /></td>
+
+		</tr>
+	</table>
+</h:body>
+<script type="text/javascript">
+	//<![CDATA[
+	function manejarLogin(xhr, status, args) {
+		alert("entre por aqui!");
+		if (!args.validationFailed && args.estaLogeado) {
+			setTimeout(function() {
+				window.location = args.view;
+			}, 500);
+		}
+	}
+	//]]>
+</script>
+</html>

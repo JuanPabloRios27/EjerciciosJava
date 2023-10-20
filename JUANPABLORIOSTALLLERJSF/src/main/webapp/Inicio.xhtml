@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Carrefour Colombia</title>
+</h:head>
+<h:body>
+
+	<p:growl id="mensajes" showDetail="true" life="2000" />
+	
+	<h:form>
+		<p:panel header="Registro de Compras" style="width:500px">
+			<h:panelGrid columns="2" cellpadding="13">
+				<h:outputLabel for="Articulo" value="Articulo:" />
+				<p:selectOneMenu id="Articulo" value="#{productosBean.categoria}">
+					<f:selectItem itemLabel="Selecciona uno" itemValue="" />
+					<f:selectItem itemLabel="Zapatos" itemValue="Zapatos" />
+					<f:selectItem itemLabel="Camisetas" itemValue="Camisetas" />
+					<f:selectItem itemLabel="Relojes" itemValue="Relojes" />
+					<f:selectItem itemLabel="Libros" itemValue="Libros" />
+					<f:selectItem itemLabel="Computadores" itemValue="Computadores" />
+					<f:facet name="footer">
+						<p:separator />
+						<h:outputText value="Lista de articulos" style="font-weight:bold;" />
+					</f:facet>
+				</p:selectOneMenu>
+				<h:outputText for="Cantidad" value="Cantidad: " />
+				<p:keyboard id="Cantidad" value="#{productosBean.cantidad}"
+					keypadOnly="true" />
+				<h:outputText for="Precio" value="Precio: " />
+				<p:spinner id="Precio" value="#{productosBean.precio}" prefix="$"
+					stepFactor="100" />
+				<h:outputLabel for="Nombre" value="Nombre:" />
+				<p:inputText value="#{productosBean.nombre}" id="Nombre"/>
+				<h:outputLabel for="Apellido" value="Apellido:" />
+				<p:inputText value="#{productosBean.apellido}" id="Apellido"/>
+				<p:outputLabel for="Tarjeta" value="Tarjeta de credito:" />
+				<p:selectOneRadio id="Tarjeta" value="#{productosbeam.tarjeta}"
+					unselectable="true">
+					<f:selectItem itemLabel="Visa" itemValue="Visa" />
+					<f:selectItem itemLabel="MasterCard" itemValue="MasterCard" />
+					<f:selectItem itemLabel="American Express"
+						itemValue="American Express" />
+				</p:selectOneRadio>
+				<p:outputLabel for="Numero" value="numero" />
+				<p:inputMask id="Numero" mask="9999-9999-9999-9999" />
+				<p:outputLabel for="Numero2" value="Confirmar numero de telefono:" />
+				<p:inputMask id="Numero2" value="#{productosbean.numero}"
+					mask="9999-9999-9999-9999" />
+				 <p:commandButton id="submitButton" value="Registrar Compra" update="@parent" />
+				 </h:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+</html>
